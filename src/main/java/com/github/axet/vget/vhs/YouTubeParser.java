@@ -342,6 +342,9 @@ public class YouTubeParser extends VGetParser {
             put(141, new StreamAudio(Container.MP4, Encoding.AAC, AudioQuality.k256));
             put(171, new StreamAudio(Container.WEBM, Encoding.VORBIS, AudioQuality.k128));
             put(172, new StreamAudio(Container.WEBM, Encoding.VORBIS, AudioQuality.k192));
+            put(249, new StreamAudio(Container.WEBM, Encoding.OPUS, AudioQuality.k50));
+            put(250, new StreamAudio(Container.WEBM, Encoding.OPUS, AudioQuality.k70));
+            put(251, new StreamAudio(Container.WEBM, Encoding.OPUS, AudioQuality.k160));
         }
     };
 
@@ -528,7 +531,7 @@ public class YouTubeParser extends VGetParser {
 
         // separate streams
         {
-            Pattern urlencod = Pattern.compile("\"adaptive_fmts\": \"([^\"]*)\"");
+            Pattern urlencod = Pattern.compile("\"adaptive_fmts\":\"([^\"]*)\"");
             Matcher urlencodMatch = urlencod.matcher(html);
             if (urlencodMatch.find()) {
                 String url_encoded_fmt_stream_map;
